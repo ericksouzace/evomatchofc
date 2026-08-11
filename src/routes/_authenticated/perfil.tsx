@@ -64,7 +64,7 @@ function ProfilePage() {
     setGoal(p.goal ?? "");
     setMaxDistance(p.max_distance_km ?? 25);
     setShowCity(p.show_city ?? true);
-    setDiscoverable(p.is_discoverable ?? true);
+    setDiscoverable(p.profile_visibility !== "private");
   }, [profile.data]);
 
   async function handleSave() {
@@ -83,7 +83,7 @@ function ProfilePage() {
         goal: goal.trim() || null,
         max_distance_km: maxDistance,
         show_city: showCity,
-        is_discoverable: discoverable,
+        profile_visibility: discoverable ? "public" : "private",
       })
       .eq("id", userId);
     setSaving(false);
