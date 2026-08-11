@@ -412,11 +412,6 @@ function AuthPage() {
           )}
         </div>
 
-        <div className="mt-6 text-center">
-          <Link to="/parceiros" className="text-sm text-muted-foreground underline">
-            Sou profissional ou empresa
-          </Link>
-        </div>
       </div>
     </main>
   );
