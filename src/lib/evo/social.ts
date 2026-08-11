@@ -20,11 +20,12 @@ export function discoverPeopleQuery(maxKm: number, sportId?: string | null) {
   return queryOptions({
     queryKey: ["discover-people", maxKm, sportId ?? null],
     queryFn: async (): Promise<DiscoveredPerson[]> => {
-      const { data, error } = await supabase.rpc("discover_people", {
+      const params: { _max_km: number; _limit: number; _sport_id?: string } = {
         _max_km: maxKm,
-        _sport_id: sportId ?? undefined,
         _limit: 30,
-      });
+      };
+      if (sportId) params._sport_id = sportId;
+      const { data, error } = await supabase.rpc("discover_people", params);
       if (error) throw error;
       return (data ?? []) as DiscoveredPerson[];
     },
