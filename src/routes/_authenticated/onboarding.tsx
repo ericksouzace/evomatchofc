@@ -170,7 +170,7 @@ function OnboardingPage() {
     if (!userId) return false;
     setSaving(true);
     try {
-      const payload: Record<string, unknown> = {
+      const payload = {
         onboarding_step: nextStep - 1,
         onboarding_completed: completed,
         primary_sport_id: primarySport,
