@@ -14,7 +14,7 @@ export function PersonCard({
   busy,
 }: {
   person: DiscoveredPerson;
-  sportName?: string;
+  sportName?: string | undefined;
   isFollowing: boolean;
   connectionStatus: "none" | "pending" | "accepted";
   onFollow: () => void;
